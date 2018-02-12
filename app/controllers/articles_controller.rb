@@ -1,4 +1,9 @@
 class ArticlesController < ApplicationController
+
+  def index
+    @articles = Article.all
+  end
+
   def new
     @article = Article.new #this is the instance variabel of Article, i can use it in my template "new"
   end
