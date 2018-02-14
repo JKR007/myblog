@@ -8,5 +8,7 @@
       "#{gravatar_for @user, size: 150 }"
 %h4{align: 'center'}
   "#{@user.username}"s articles
+%div.center
+  =will_paginate @user_articles
 
-=render 'articles/article', obj: @user.articles
+=render 'articles/article', obj: @user_articles
