@@ -4,6 +4,16 @@
     %small{:align => "center"} Love what you do, Do what you love
   %div.panel.panel-info
     %div.col-xs_8.col-xs_offset_2
+      %ul.mid
+        .row.center
+          .well.col-md_4.col-md_offset_4
+            %li
+              =link_to(gravatar_for(@article.user), user_path(@article.user)) if @article.user
+            %li.article-title
+              =link_to(@article.user.username, user_path(@article.user)) if @article.user
+            %li
+              %small
+                =pluralize(@article.user.articles.count, 'article') if @article.user.articles
       %h3{:align => "center", :class => "description"}
         %strong
           Description:
