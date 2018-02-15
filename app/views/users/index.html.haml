@@ -12,5 +12,9 @@
           %li
             %small
               =pluralize(user.articles.count, 'article') if user.articles
+        -if logged_in? and current_user.admin?
+          %li
+          %span{:class => "glyphicon glyphicon-remove"}
+          = link_to "Delete this user", user_path(user), class: "down-border btn btn-sm btn-danger", method: :delete, data: {confirm: "Are you sure you want to delete the user and all their articles?"}
   %div{align: 'center'}
     = will_paginate
