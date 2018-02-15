@@ -1,0 +1,11 @@
+.container
+  %h1{align: "center"}Listing All Categories
+  =@categories.each do |category|
+    %ul.listing
+      .row
+        .well.col-md_4.col-md_offset_4
+          %li.article-title
+            =link_to "#{category.name}",
+              category_path(category)
+  %div{align: "center"}
+    = will_paginate
