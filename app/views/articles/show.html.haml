@@ -13,7 +13,7 @@
               =link_to(@article.user.username, user_path(@article.user)) if @article.user
             %li
               %small
-                =pluralize(@article.user.articles.count, 'article') if @article.user.articles
+                = pluralize(@article.user.articles.count, 'article') if @article.user.articles
       %h3{:align => "center", :class => "description"}
         %strong
           Description:
@@ -21,11 +21,12 @@
       %blockquote
         #{@article.description}
       %div.article-actions
-        %span{:class => "glyphicon glyphicon-pencil"}
-        =link_to "Edit this Article", edit_article_path(@article), class: "btn btn-sm btn-primary"
-        %span{:class => "glyphicon glyphicon-remove"}
-        =link_to "Delete this article", article_path(@article),
-                  method: :delete,
-                  data: {confirm: "Are you shure you want to delete the articles"}, class: "btn btn-sm btn-danger"
+        -if logged_in? && current_user == @article.user
+          %span{:class => "glyphicon glyphicon-pencil"}
+          =link_to "Edit this Article", edit_article_path(@article), class: "btn btn-sm btn-primary"
+          %span{:class => "glyphicon glyphicon-remove"}
+          =link_to "Delete this article", article_path(@article),
+                    method: :delete,
+                    data: {confirm: "Are you shure you want to delete the articles"}, class: "btn btn-sm btn-danger"
         %span{:class => "glyphicon glyphicon-file"}
         =link_to "View all Articles", articles_path, class: "btn btn-sm btn-success"
