@@ -5,10 +5,6 @@ class CategoriesController < ApplicationController
     @categories = Category.paginate(page: params[:page], per_page: 5)
   end
 
-  def show
-
-  end
-
   def new
     @category = Category.new
   end
@@ -23,6 +19,9 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def show
+
+  end
 
   private
   def category_params
