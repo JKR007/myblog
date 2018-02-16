@@ -15,6 +15,13 @@
             =f.label :description
           %div.col-sm_8
             =f.text_area :description, rows: 10, class: "form-control", placeholder: "Description of article", aoutofcus: true
+        %div.container
+          %div.form-group
+            %div.row
+              %div.col-sm_8
+                =f.collection_check_boxes :category_ids, Category.all, :id, :name do |cb|
+                  #{cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text }}
+        %div.col-xs_4.col-xs_offset_4
         %div.form-group
           %div.col-sm_10
             =f.submit class: 'btn btn-primary btn-lg'

@@ -7,6 +7,10 @@
         %div.article-body
           =truncate(article.description, length: 100)
           %div.article-meta_details
+            -if article.categories.any?
+              %p
+                Categories:
+                =render article.categories
             %small
               Created by:
               = "#{article.user.username if article.user}"

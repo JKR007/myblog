@@ -7,5 +7,8 @@
           %li.article-title
             =link_to "#{category.name}",
               category_path(category)
+          %li
+            %small
+              =pluralize(category.articles.count, "article")
   %div{align: "center"}
     = will_paginate
